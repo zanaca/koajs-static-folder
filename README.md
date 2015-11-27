@@ -30,10 +30,30 @@ app.listen(8000);
 console.log('Koa server listening at port 8000');
 ```
 
+```
+import Koa from 'koa';
+import Static from 'koa-static-folder';
+
+const app = new Koa();
+
+app
+    .use(new Static('./public', {maxage: 10 * 60 * 1000}))
+    .use(new Static('./assets', {maxage: 5 * 60 * 1000}))
+    .use(function *(next){
+        if('/' == this.path){
+            this.body = 'Try GET one of the following: `/assets/style.css`,`/public/blabla.json`,`/public/style.css`';
+        }
+        });
+
+app.listen(8000);
+console.log('Koa server listening at port 8000');
+```
+
 ## License
   MIT
 
 ## Release log
+0.1.6 - Added the possibility to inform max-age for caching.  
 0.1.5 - Updated documentation slightly.  
 0.1.4 - Updated documentation slightly.  
 0.1.3 - Using procedd.cwd() instead of dirname fixing some bugs with different file locations and systems.  
