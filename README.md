@@ -22,7 +22,7 @@ app.use(serve('./assets'));
 
 app.use(function *(next){
     if('/' == this.path){
-        this.body = 'Try GET one of the following: `/assets/style.css`,`/public/blabla.json1`,`/public/style.css`';
+        this.body = 'Try GET one of the following: `/assets/style.css`,`/public/blabla.json`,`/public/style.css`';
     }
 });
 
