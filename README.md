@@ -2,6 +2,15 @@
 
 Middleware for KoaJS to serve a folder as static files. Other implementations require every file to be appointed individually (as far as I know). The software initializes at the startup of your application, so changes made in the underlying folders require a restart of your app.
 
+
+## Options
+
+ - `maxage` Browser cache max-age in milliseconds. defaults to 0
+ - `hidden` Allow transfer of hidden files. defaults to false
+ - `gzip` Try to serve the gzipped version of a file automatically when `gzip` is supported by a client and if the requested file with `.gz` extension exists. defaults to true.
+ - `format` If not `false` (defaults to `true`), format the path to serve static file servers and not require a trailing slash for directories, so that you can do both `/directory` and `/directory/`
+
+
 ## Example
 ```js
 var serve = require('koa-static-folder'),
